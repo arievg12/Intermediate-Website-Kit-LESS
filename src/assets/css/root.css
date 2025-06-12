@@ -922,121 +922,104 @@ body {
   }
 }
 /*-- -------------------------- -->
-<---    Final Call To Action    -->
+<---            CTA             -->
 <--- -------------------------- -*/
-/* Mobile */
+/* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-  #cta {
+  #cta-1394 {
+    /* 60px - 124px top and bottom */
+    padding: clamp(3.75rem, 7.82vw, 7.75rem) 1rem;
+    background-color: #1a1a1a;
     position: relative;
-    padding: 3.125rem 0;
+    overflow: hidden;
+    z-index: 1;
   }
-  #cta .container {
+  #cta-1394 .cs-container {
+    width: 100%;
+    /* changes to 1280px at tablet */
+    max-width: 34.375rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 48px - 64px */
+    gap: clamp(3rem, 6vw, 4rem);
+    position: relative;
+    z-index: 1;
+  }
+  #cta-1394 .cs-content {
+    /* set text align to left if content needs to be left aligned */
     text-align: center;
+    width: 100%;
+    max-width: 32.625rem;
+    display: flex;
+    flex-direction: column;
+    /* centers content horizontally, set to flex-start to left align */
+    align-items: center;
+    position: relative;
+    z-index: 1;
   }
-  #cta picture {
-    z-index: -2;
+  #cta-1394 .cs-content:before {
+    /* circle overlay */
+    content: "";
+    width: 48.375rem;
+    height: 48.375rem;
+    background: #1a1a1a;
+    opacity: 0.8;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+    /* -36px to -92px */
+    top: calc(clamp(2.25rem, 6vw, 5.75rem)*-1);
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%);
+  }
+  #cta-1394 .cs-title,
+  #cta-1394 .cs-text {
+    max-width: 31.25rem;
+    color: var(--bodyTextColorWhite);
+  }
+  #cta-1394 .cs-text {
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+  #cta-1394 .cs-background {
+    width: 100%;
+    height: 100%;
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
+  }
+  #cta-1394 .cs-background img {
     height: 100%;
     width: 100%;
-  }
-  #cta picture img {
+    opacity: 0.5;
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
     object-fit: cover;
   }
-  #cta .title {
-    position: relative;
-    margin-bottom: 2.25rem;
-    font-size: min(9vw, 3rem);
-    line-height: 1.20833333em;
-    font-weight: 900;
-    color: #fff;
-    text-align: center;
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #cta-1394 .cs-container {
+    max-width: 80rem;
   }
-  #cta p {
-    opacity: 1;
-    margin: auto;
-    margin-bottom: 2.25rem;
-    max-width: 37.375rem;
-    width: 96%;
-    color: #fff;
-    text-align: center;
-  }
-  #cta:before {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    opacity: 0.7;
-    display: block;
-    background: #000;
-    height: 100%;
+  #cta-1394 .cs-input {
     width: 100%;
   }
-}
-/* Small Desktop */
-@media only screen and (min-width: 64rem) {
-  #cta {
-    padding: 10.5rem 0;
-  }
-}
-/* Large Desktop */
-@media only screen and (min-width: 1300px) {
-  #cta {
-    position: relative;
-    margin-top: 6.25rem;
-  }
-  #cta .container {
-    margin: auto;
-    width: 90.0625%;
-  }
-  #cta picture {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90.0625%;
-  }
-  #cta picture:before {
-    z-index: 1;
+  #cta-1394 .cs-submit {
+    width: auto;
     position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    opacity: 0.7;
-    display: block;
-    background: #000;
-    height: 100%;
-    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.5rem;
   }
-  #cta:before {
-    display: none;
-  }
-  #cta:after {
-    z-index: -3;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    content: "";
-    opacity: 1;
-    transform: translateX(-50%);
-    display: block;
-    background: url("/assets/svgs/cta-squares.svg");
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 69.25rem;
-    width: 125rem;
-  }
-}
-/* Dark Mode */
-@media only screen and (min-width: 0rem) {
-  body.dark-mode #cta:after {
-    display: none;
+  #cta-1394 .cs-picture {
+    width: 50%;
   }
 }
 /*-- -------------------------- -->
