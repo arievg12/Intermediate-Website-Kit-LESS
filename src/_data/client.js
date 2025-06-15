@@ -6,10 +6,10 @@ module.exports = {
     "address": {
         "lineOne": "First Address Line",
         "lineTwo": "Second Address Line",
-        "city": "Denver",
-        "state": "CO",
-        "zip": "80206",
-        "country": "US",
+        "city": "Perth",
+        "state": "WA",
+        "zip": "6026",
+        "country": "AUS",
         "mapLink": "https://maps.app.goo.gl/TEdS5KoLC9ZcULuQ6"
     },
     "socials": {
