@@ -206,3 +206,299 @@
         }
     }
 }
+
+/*-- -------------------------- -->
+<---            FAQ             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #faq-489 {
+        padding: var(--sectionPadding);
+        background: #fafbfc;
+
+        .cs-container {
+            width: 100%;
+            /* changes to 1280px at tablet */
+            max-width: (550/16rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            /* 40px - 48px */
+            gap: clamp(2.5rem, 5vw, 3rem);
+        }
+
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+        }
+
+        .cs-color {
+            color: var(--primary);
+        }
+        .cs-title {
+            /* 17 characters wide including spaces */
+            max-width: 17ch;
+        }
+
+        .cs-text {
+            /* 32px - 48px */
+            margin-bottom: clamp(2rem, 3vw, 3rem);
+        }
+
+        .cs-button-solid {
+            font-size: (16/16rem);
+            /* 46px - 56px */
+            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            min-width: (150/16rem);
+            padding: 0 (24/16rem);
+            background-color: var(--primary);
+            border-radius: (4/16rem);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                border-radius: (4/16rem);
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        .cs-faq-group {
+            max-width: (740/16rem);
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: (20/16rem);
+        }
+
+        .cs-faq-item {
+            list-style: none;
+            width: 100%;
+            /* prevents border from affecting width and height */
+            box-sizing: border-box;
+            border: 1px solid #f1f1f4;
+            transition:
+                border 0.3s,
+                padding 0.3s,
+                border-color 0.3s;
+
+            &:hover {
+                border-color: var(--primary);
+            }
+
+            &.active {
+                padding-bottom: (16/16rem);
+                border-color: var(--primary);
+                .cs-button {
+                    color: var(--primary);
+                    &:before {
+                        transform: translateY(-50%) rotate(180deg);
+                        opacity: 0;
+                        background-color: var(--primary);
+                    }
+                    &:after {
+                        transform: translateY(-50%) rotate(360deg);
+                        background-color: var(--primary);
+                    }
+                }
+                .cs-item-p {
+                    height: auto;
+                    margin-top: (8/16rem);
+                    opacity: 1;
+                }
+            }
+        }
+
+        .cs-button {
+            /* 20px - 25px */
+            font-size: clamp(1.25rem, 1vw, 1.5625rem);
+            line-height: 1.2em;
+            text-align: left;
+            font-weight: bold;
+            padding: (16/16rem) (24/16rem);
+            border: none;
+            background: transparent;
+            color: var(--headerColor);
+            display: block;
+            width: 100%;
+            position: relative;
+            transition:
+                background-color 0.3s,
+                color 0.3s;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &:before {
+                /* horizontal line */
+                content: "";
+                width: (16/16rem);
+                height: (3/16rem);
+                background-color: currentColor;
+                opacity: 1;
+                border-radius: 1px;
+                position: absolute;
+                display: block;
+                top: 50%;
+                right: (24/16rem);
+                transform: translateY(-50%);
+                transition:
+                    transform 0.5s,
+                    opacity 0.3s;
+            }
+
+            &:after {
+                /* vertical line */
+                content: "";
+                width: (16/16rem);
+                height: (3/16rem);
+                background-color: currentColor;
+                opacity: 1;
+                border-radius: 1px;
+                position: absolute;
+                display: block;
+                top: 50%;
+                right: (24/16rem);
+                transform: translateY(-50%) rotate(90deg);
+                transform-origin: center;
+                transition: transform 0.5s;
+            }
+        }
+
+        .cs-button-text {
+            width: 80%;
+            display: block;
+        }
+
+        .cs-item-p {
+            /* 14px - 16px */
+            font-size: clamp(0.875rem, 1.5vw, 1rem);
+            line-height: 1.5em;
+            width: 90%;
+            height: 0;
+            margin: 0;
+            /* prevents padding and border from affecting height and width */
+            box-sizing: border-box;
+            padding: 0 (24/16rem);
+            opacity: 0;
+            color: var(--bodyTextColor);
+            /* clips the text so it doesn't show up */
+            overflow: hidden;
+            transition:
+                opacity 0.3s,
+                padding-bottom 0.3s;
+        }
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 48rem) {
+    #faq-489 {
+        .cs-container {
+            max-width: (1280/16rem);
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: (52/16rem);
+        }
+
+        .cs-content {
+            margin-top: (50/16rem);
+        }
+
+        .cs-title,
+        .cs-topper {
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .cs-faq-group {
+            width: clamp(56%, 58vw, 58%);
+            flex: none;
+        }
+    }
+}
+
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        #faq-489 {
+            background-color: rgba(0, 0, 0, 0.2);
+            .cs-topper {
+                color: var(--primaryLight);
+            }
+
+            .cs-title,
+            .cs-text,
+            .cs-item-p {
+                color: var(--bodyTextColorWhite);
+            }
+
+            .cs-text,
+            .cs-item-p {
+                opacity: 0.8;
+            }
+
+            .cs-faq-item {
+                border-color: rgba(255, 255, 255, 0.2);
+                &:hover {
+                    border-color: var(--primary);
+                }
+                &.active {
+                    border-color: var(--primaryLight);
+                    .cs-button {
+                        color: var(--primaryLight);
+                        &:before,
+                        &:after {
+                            background-color: var(--primaryLight);
+                        }
+                    }
+                }
+            }
+
+            .cs-button {
+                color: var(--bodyTextColorWhite);
+                &:before,
+                &:after {
+                    background-color: var(--bodyTextColorWhite);
+                }
+            }
+        }
+    }
+}
+
+                                
