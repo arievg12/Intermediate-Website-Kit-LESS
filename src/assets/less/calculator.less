@@ -1,0 +1,813 @@
+/* Calculator Section Base Styles */
+#cost-calculator {
+    padding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    background-color: #f9f9f9; /* Keeping a light background for the section itself in light mode */
+    font-family: "Roboto", Arial, sans-serif;
+    color: var(--bodyTextColor);
+    transition: background-color 0.3s ease; /* Add transition for smooth dark mode swap */
+}
+
+.calculator-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff; /* White background for the main content box in light mode */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition */
+}
+
+/* Headings within the calculator */
+.calculator-container h2,
+.calculator-container h3 { /* Combined for consistency */
+    font-weight: 900; /* Keeping font weights consistent */
+    line-height: 1.2em;
+    text-align: center;
+    color: var(--headerColor);
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease; /* Add transition */
+}
+.calculator-container h2 {
+    font-size: var(--headerFontSize);
+}
+.calculator-container h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+
+/* Input Group Styling */
+.input-group {
+    background-color: #f7f7f7;
+    padding: 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Add transition */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--headerColor);
+    font-size: var(--bodyFontSize);
+    transition: color 0.3s ease; /* Add transition */
+}
+
+/* Base style for text inputs */
+.input-group input[type="number"] {
+    width: calc(100% - 20px); 
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--bodyTextColor); 
+    border-radius: 4px;
+    font-size: var(--bodyFontSize);
+    color: var(--bodyTextColor);
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Add transition */
+}
+
+/* Package Selection and Add-ons Group */
+.package-selection label,
+.add-ons-group div label {
+    display: flex; 
+    align-items: center;
+    margin-bottom: 0.625rem;
+    padding: 0.75rem 1rem;
+    background-color: #fff; 
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.3s ease; /* Add transition */
+    font-size: var(--bodyFontSize);
+    color: var(--bodyTextColor);
+}
+
+.package-selection label:hover,
+.add-ons-group div label:hover {
+    background-color: var(--secondaryLight); 
+    border-color: var(--secondary); 
+}
+
+.package-selection input[type="radio"],
+.add-ons-group input[type="checkbox"] {
+    margin-right: 0.625rem;
+    transform: scale(1.2); 
+    flex-shrink: 0; 
+}
+
+/* Style for checked radio/checkbox text */
+/* This specific selector (`+ br + br + ...`) might be fragile if you adjust your HTML.
+   Consider wrapping the text in a <span> inside the label and targeting that. */
+.package-selection input[type="radio"]:checked + br + br + br + br + br + br,
+.add-ons-group input[type="checkbox"]:checked + span { /* Assuming you might wrap text in span */
+    font-weight: 700; 
+    color: var(--headerColor); 
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative;
+    height: 400px; 
+    width: 100%;
+    margin-bottom: 1.875rem;
+}
+
+/* Table Styling */
+.table-container {
+    overflow-x: auto; 
+}
+
+#costTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.25rem; 
+    font-size: var(--bodyFontSize);
+}
+
+#costTable th,
+#costTable td {
+    border: 1px solid #ddd; 
+    padding: 0.75rem; 
+    text-align: right;
+    color: var(--bodyTextColor);
+    transition: color 0.3s ease, border-color 0.3s ease; /* Add transition */
+}
+
+#costTable th {
+    background-color: var(--primary); 
+    color: white; 
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition */
+}
+
+#costTable tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.03); 
+    transition: background-color 0.3s ease; /* Add transition */
+}
+
+#costTable tr:hover {
+    background-color: var(--primaryLight); 
+}
+
+
+/* ----------------------------------------------- */
+/* DARK MODE STYLES                  */
+/* ----------------------------------------------- */
+
+body.dark-mode {
+    #cost-calculator {
+        background-color: var(--dark); /* Dark background for the section */
+    }
+
+    .calculator-container {
+        background-color: var(--medium); /* Slightly lighter dark for inner container */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Darker shadow */
+    }
+
+    .calculator-container h2,
+    .calculator-container h3,
+    .input-group label {
+        color: var(--bodyTextColorWhite); /* White text for headings and labels */
+    }
+
+    .input-group {
+        background-color: var(--accent); /* Darker background for input groups */
+        border-color: rgba(255, 255, 255, 0.1); /* Lighter, subtle border */
+    }
+
+    .input-group input[type="number"] {
+        background-color: var(--dark); /* Dark background for inputs */
+        color: var(--bodyTextColorWhite); /* White text for input values */
+        border-color: rgba(255, 255, 255, 0.2); /* Lighter border for inputs */
+    }
+
+    .package-selection label,
+    .add-ons-group div label {
+        background-color: var(--accent); /* Darker background for options */
+        border-color: rgba(255, 255, 255, 0.1); /* Lighter, subtle border */
+        color: var(--bodyTextColorWhite); /* White text for options */
+    }
+
+    .package-selection label:hover,
+    .add-ons-group div label:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Lighter hover background */
+        border-color: var(--primary); /* Keep primary color for hover border */
+    }
+    
+    .package-selection input[type="radio"]:checked + br + br + br + br + br + br,
+    .add-ons-group input[type="checkbox"]:checked + span {
+        color: var(--primary); /* Use primary color for checked text in dark mode */
+    }
+
+    #costTable th {
+        background-color: var(--primary); /* Keep primary for table header */
+        color: white; /* Keep white text */
+    }
+
+    #costTable td {
+        color: var(--bodyTextColorWhite); /* White text for table data */
+        border-color: rgba(255, 255, 255, 0.1); /* Lighter border for table cells */
+    }
+
+    #costTable tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.05); /* Slightly lighter dark for even rows */
+    }
+
+    #costTable tr:hover {
+        background-color: var(--accent); /* Darker hover for table rows */
+    }
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .package-selection label,
+    .add-ons-group div label {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .package-selection input[type="radio"],
+    .add-ons-group input[type="checkbox"] {
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
+}
+
+/*-- -------------------------- -->
+<---          Pricing           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #pricing-1387 {
+        padding: var(--sectionPadding);
+        /* clips the cs-floater and prevents it from causing overflow issues */
+        overflow: hidden;
+        background-color: #f7f7f7;
+        position: relative;
+        z-index: 1;
+
+        .cs-container {
+            width: 100%;
+            /* changes to 1280px at tablet */
+            max-width: (584/16rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 48px - 64px */
+            gap: clamp(3rem, 3vw, 4rem);
+            position: relative;
+        }
+
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: center;
+            width: 100%;
+            max-width: (542/16rem);
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: center;
+        }
+
+        .cs-title {
+            max-width: 20ch;
+        }
+
+        .cs-text {
+            margin-bottom: (16/16rem);
+            &:last-of-type {
+                margin-bottom: (32/16rem);
+            }
+        }
+
+        .cs-toggle-group {
+            width: 100%;
+            max-width: (414/16rem);
+            margin: 0;
+            padding: (12/16rem);
+            /* prevents padding and border from affecting height and width */
+            box-sizing: border-box;
+            background-color: #f1f1f4;
+            border-radius: (8/16rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cs-plan {
+            font-size: (16/16rem);
+            font-weight: 700;
+            line-height: 1.5em;
+            margin: 0;
+            padding: 0;
+            color: var(--headerColor);
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .cs-toggle {
+            width: (52/16rem);
+            height: (32/16rem);
+            border-radius: (40/16rem);
+            background-color: var(--primaryLight);
+            margin: 0 (24/16rem);
+            position: relative;
+            /* prevent flexbox from squishing it */
+            flex: none;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.active {
+                &:before {
+                    opacity: 1;
+                }
+                .cs-toggle-switch {
+                    left: (23/16rem);
+                }
+            }
+
+            &:before {
+                /* top right box */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: var(--primary);
+                opacity: 0;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                border-radius: (40/16rem);
+                transition: opacity 0.3s;
+            }
+        }
+
+        .cs-toggle-switch {
+            width: (26/16rem);
+            height: (26/16rem);
+            display: block;
+            border-radius: 50%;
+            filter: drop-shadow(0px 3px 1px rgba(0, 0, 0, 0.06))
+                drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.15));
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: (3/16rem);
+            transition: left 0.3s;
+            background: #fff;
+        }
+
+        .cs-card-group {
+            width: 100%;
+            max-width: (630/16rem);
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* 16px - 20px */
+            gap: clamp(1rem, 2.3vw, 1.25rem);
+
+            &.cs-active {
+                &.cs-option1 {
+                    /* when the active class is on the cs-card-group, run these styles */
+                    transform: scale(0);
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    opacity: 0;
+                    visibility: hidden;
+
+                    .cs-item {
+                        /* when the active class is on the cs-card-group, run these styles */
+                        opacity: 0;
+                        transform: translateY(1.25rem) rotateY(90deg);
+                        transition:
+                            opacity 0.3s,
+                            transform 0.6s;
+                    }
+                }
+
+                &.cs-option2 {
+                    /* when the active class is on the cs-card-group, run these styles */
+                    visibility: visible;
+                    pointer-events: all;
+                    opacity: 1;
+                    position: relative;
+                    right: auto;
+                    bottom: auto;
+                    transform: scale(1);
+
+                    .cs-item {
+                        /* when the active class is on the cs-card-group, run these styles */
+                        opacity: 1;
+                        transform: translateY(0rem) rotateY(0deg);
+                    }
+                }
+            }
+        }
+
+        .cs-option1 {
+            /* default styles when there is no active class on the cs-card-group */
+            opacity: 1;
+            visibility: visible;
+            right: 0;
+            bottom: auto;
+            transform: scale(1);
+            transform-origin: top;
+            transition:
+                transform 0.6s,
+                opacity 0.3s,
+                visibility 0.3s;
+
+            .cs-item {
+                /* default styles when there is no active class on the cs-card-group */
+                opacity: 1;
+                transform: translateY(0rem) rotateY(0deg);
+                transition:
+                    opacity 0.3s,
+                    transform 0.6s;
+                &:nth-of-type(2) {
+                    transition-delay: 0.2s;
+                }
+                &:nth-of-type(3) {
+                    transition-delay: 0.4s;
+                }
+            }
+        }
+
+        .cs-option2 {
+            /* default styles when there is no active class on the cs-card-group */
+            visibility: hidden;
+            pointer-events: none;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transform: scale(0);
+            transform-origin: top;
+            transition:
+                transform 0.6s,
+                opacity 0.3s,
+                visibility 0.3s;
+
+            .cs-item {
+                /* default styles when there is no active class on the cs-card-group */
+                opacity: 0;
+                transform: translateY(1.25rem) rotateY(90deg);
+                transition:
+                    opacity 0.3s,
+                    transform 0.6s;
+                &:nth-of-type(2) {
+                    transition-delay: 0.2s;
+                }
+                &:nth-of-type(3) {
+                    transition-delay: 0.4s;
+                }
+            }
+        }
+
+        .cs-item {
+            text-align: center;
+            list-style: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            justify-content: center;
+
+            &.cs-popular {
+                .cs-flex {
+                    background-color: var(--primary);
+                }
+
+                .cs-tag {
+                    display: flex;
+                }
+
+                .cs-package,
+                .cs-price,
+                .cs-duration {
+                    color: var(--bodyTextColorWhite);
+                }
+
+                .cs-duration {
+                    opacity: 0.8;
+                }
+
+                .cs-button-transparent {
+                    background-color: var(--primary);
+                    color: #fff;
+                    transition:
+                        color 0.3s,
+                        border-color 0.6s,
+                        background-color 0.3s;
+
+                    &:hover {
+                        border-color: #1a1a1a;
+                        background-color: #1a1a1a;
+                    }
+                }
+            }
+        }
+
+        .cs-flex {
+            /* 196px - 250px */
+            width: clamp(12.25rem, 25vw, 15.625rem);
+            height: clamp(12.25rem, 25vw, 15.625rem);
+            margin-bottom: (-100/16rem);
+            border-radius: 50%;
+            background-color: #e8e8e8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cs-tag {
+            font-size: (13/16rem);
+            color: var(--headerColor);
+            text-transform: uppercase;
+            /* keeps the text in one line, won't jump to two lines */
+            white-space: nowrap;
+            font-weight: 700;
+            padding: (8/16rem);
+            gap: (4/16rem);
+            border-radius: 50px;
+            background-color: #fff;
+            /* clips the corners of the pseudo element */
+            overflow: hidden;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            bottom: (-4/16rem);
+            transform: translateX(-50%);
+
+            &:before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: var(--primary);
+                opacity: 0.3;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        }
+
+        .cs-icon {
+            width: (20/16rem);
+            height: auto;
+            display: flex;
+        }
+
+        .cs-package {
+            /* 20px - 25px */
+            font-size: clamp(1.25rem, 2vw, 1.5625rem);
+            line-height: 1.2em;
+            text-align: inherit;
+            font-weight: 700;
+            /* 4px - 8px */
+            margin: 0 0 clamp(0.25rem, 1vw, 0.5rem) 0;
+        }
+
+        .cs-price {
+            /* 31px - 49px */
+            font-size: clamp(1.9375rem, 4vw, 3.0625rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            text-align: inherit;
+            margin: 0;
+            padding: 0;
+            color: var(--headerColor);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .cs-duration {
+            font-size: (16/16rem);
+            line-height: 1.5em;
+            font-weight: 400;
+            text-align: inherit;
+            margin: 0;
+            /* 4px - 8px */
+            padding: clamp(0.25rem, 1vw, 0.5rem) 0;
+            color: var(--bodyTextColor);
+            display: block;
+        }
+
+        .cs-info {
+            width: 100%;
+            padding: (86/16rem) (40/16rem) (40/16rem);
+            /* prevents padding from affecting height and width */
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: (24/16rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cs-ul {
+            width: 100%;
+            margin: (40/16rem) 0 (40/16rem) 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: (12/16rem);
+            position: relative;
+        }
+
+        .cs-li {
+            font-size: (16/16rem);
+            list-style: none;
+            line-height: 1.5em;
+            font-weight: 400;
+            text-align: inherit;
+            margin: 0;
+            padding: 0;
+            color: var(--bodyTextColor);
+            display: block;
+
+            &.cs-disabled {
+                opacity: 0.5;
+            }
+        }
+
+        .cs-button-transparent {
+            font-size: (16/16rem);
+            line-height: (56/16rem);
+            text-decoration: none;
+            font-weight: 700;
+            overflow: hidden;
+            margin: 0;
+            color: var(--primary);
+            padding: 0 (48/16rem);
+            border-radius: (30/16rem);
+            border: 1px solid var(--primary);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s;
+
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                height: 100%;
+                width: 0%;
+                background: #1a1a1a;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                color: var(--bodyTextColorWhite);
+                border-color: #1a1a1a;
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        .cs-button-transparent {
+            /* this is the section specific override if you choose to pull out the cs-button-transparent and place it in a global stylesheet to resue acorss the entire site */
+            margin-top: auto;
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #pricing-1387 {
+        .cs-container {
+            max-width: (1280/16rem);
+
+            .cs-card-group {
+                flex-direction: row;
+                align-items: stretch;
+            }
+        }
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #pricing-1387 {
+        .cs-container {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cs-content {
+            text-align: left;
+            width: 47%;
+            align-items: flex-start;
+        }
+
+        .cs-info {
+            min-height: (432/16rem);
+        }
+    }
+}
+
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        #pricing-1387 {
+            background-color: var(--dark);
+
+            .cs-title,
+            .cs-text {
+                color: var(--bodyTextColorWhite);
+            }
+
+            .cs-text {
+                opacity: 0.8;
+            }
+
+            .cs-toggle-group {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            .cs-plan {
+                color: var(--bodyTextColorWhite);
+            }
+
+            .cs-flex {
+                background-color: var(--dark);
+            }
+
+            .cs-ul {
+                &:before {
+                    opacity: 0.5;
+                }
+            }
+
+            .cs-item {
+                &.cs-popular {
+                    .cs-button-transparent {
+                        background-color: #fff;
+                        color: var(--primary);
+
+                        &:hover {
+                            background-color: #1a1a1a;
+                        }
+                    }
+                }
+            }
+
+            .cs-info {
+                background-color: var(--medium);
+            }
+
+            .cs-package {
+                color: var(--primary);
+            }
+
+            .cs-price,
+            .cs-duration,
+            .cs-li {
+                color: var(--bodyTextColorWhite);
+            }
+
+            .cs-duration,
+            .cs-li {
+                opacity: 0.8;
+            }
+
+            .cs-button-transparent {
+                background-color: var(--primary);
+                color: #fff;
+                border: none;
+                transition:
+                    color 0.3s,
+                    background-color 0.3s;
+
+                &:hover {
+                    background-color: #1a1a1a;
+                }
+            }
+        }
+    }
+}
