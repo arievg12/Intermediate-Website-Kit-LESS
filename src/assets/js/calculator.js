@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'micro-business': {
             label: 'Micro Business',
             subscription: { upfront: 0, monthly: 99 },
-            lumpSum: { upfront: 999, monthly: 25 } // Assuming lump sum also has a monthly component
+            lumpSum: { upfront: 1499, monthly: 25 } // Assuming lump sum also has a monthly component
         },
         'small-business': {
             label: 'Small Business',

@@ -11,7 +11,8 @@ eleventyNavigation:
 {% extends "layouts/base.html" %}
 
 {% block head %}
-    <link rel="stylesheet" href="/assets/css/reviews.css">
+    <link rel="stylesheet" href="/assets/css/pricing.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -23,9 +24,9 @@ eleventyNavigation:
 <section id="int-hero">
         <h1 id="home-h">Our Pricing</h1>
         <picture class="cs-picture">
-            <source media="(max-width: 600px)" srcset="/assets/images/landing-m.webp">
-            <source media="(min-width: 601px)" srcset="/assets/images/landing.jpg">
-            <img aria-hidden="true" decoding="async" src="/assets/images/landing.jpg" alt="new home" width="2500" height="1667" loading="eager">
+            <source media="(max-width: 600px)" srcset="/assets/images/hero-coding.webp-m">
+            <source media="(min-width: 601px)" srcset="/assets/images/hero-coding.webp">
+            <img aria-hidden="true" decoding="async" src="/assets/images/hero-coding.webp" alt="Web Design" width="2500" height="1667" loading="eager">
         </picture>
 </section>
 
@@ -123,7 +124,7 @@ eleventyNavigation:
                 <div class="cs-flex">
                     <span class="cs-package">Small-Business</span>
                     <span class="cs-price">
-                        $1800
+                        $1999
                         <span class="cs-duration">+ $25/Month</span>
                     </span>
                     <div class="cs-tag">
@@ -145,7 +146,7 @@ eleventyNavigation:
                 <div class="cs-flex">
                     <span class="cs-package">Micro-Business</span>
                     <span class="cs-price">
-                        $999
+                        $1499
                         <span class="cs-duration">+ $25/Month</span>
                     </span>
                     <div class="cs-tag">
@@ -201,7 +202,70 @@ eleventyNavigation:
         </div>
     </div>
 </section>
-                                
+
+<!-- ============================================ -->
+<!--                   CALCULATOR                 -->
+<!-- ============================================ -->
+<section id="cost-calculator">
+        <div class="calculator-container">
+            <h2>Website Package Comparison - Cost Over Time</h2>
+
+            <div class="input-group">
+                <h3>Select Your Package</h3>
+                <div class="package-selection">
+                    <label>
+                        <input type="radio" name="package" value="micro-business"> 
+                        Micro Business: <br>
+                        $0 upfront + $99 monthly OR $1499 upfront + $25 monthly
+                    </label>
+                    <label>
+                        <input type="radio" name="package" value="small-business" checked> 
+                        Small Business: <br>
+                        $0 upfront + $149 monthly OR $1999 upfront + $25 monthly
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-group add-ons-group">
+                <h3>Select Your Add-ons</h3>
+                <div>
+                    <label>
+                        <input type="checkbox" id="addonGoogleMyBusiness" checked> Google My Business Management ($25/month)
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" id="addonLogoCreation"> Logo Creation ($150 once off)
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" id="addonGoogleAnalytics" checked> Google Analytics Setup ($25/month)
+                    </label>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="costChart"></canvas>
+            </div>
+
+            <h3>Cost Breakdown Over Time</h3>
+            <div class="table-container">
+                <table id="costTable">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Package + Add-ons (Subscription)</th>
+                            <th>Package + Add-ons (Lump Sum)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script src="/assets/js/calculator.js"></script> 
 
     {% include 'components/cta.html' %}
 
